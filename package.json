@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod && ngh --dir dist/bucket-list",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
