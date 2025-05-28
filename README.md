@@ -83,9 +83,7 @@ Made with love by ftiannn
 I sprinkle joy into every pixel ✨
 Follow me on [instagram](https://instagram.com/ftiannn)
 
-## 📄 License
-
-MIT – you're welcome to explore or remix for learning.  
+you're welcome to explore or remix for learning.
 If you do fork it, please credit or link back to the original ✨
 
 ## 💡 Inspiration
