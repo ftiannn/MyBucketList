@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/MyBucketList/",
             "outputPath": "dist/bucket-list",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -122,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "bucket-list"
+  "defaultProject": "bucket-list",
+  "cli": {
+    "analytics": false
+  }
 }
