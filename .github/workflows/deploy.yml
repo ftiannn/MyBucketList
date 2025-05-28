@@ -28,6 +28,6 @@ jobs:
         run: npx ng build --configuration production --base-href /MyBucketList/
 
       - name: Deploy to GitHub Pages
-        run: npx angular-cli-ghpages --dir=dist/MyBucketList --branch=gh-pages
+        run: npx angular-cli-ghpages --dir=dist/bucket-list --branch=gh-pages
         env:
           CI: true
