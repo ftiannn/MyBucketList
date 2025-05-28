@@ -25,15 +25,15 @@ jobs:
         run: npm ci
 
       - name: Build Angular App
-        run: npx ng build --configuration production --base-href /MyBucketList/
+        run: npx ng build --configuration production --base-href /dudoo/
 
       - name: Set Git identity for deployment
         run: |
-          git config user.name "bucketList-bot"
-          git config user.email "bot@bucketList.app"
+          git config user.name "dudoo-bot"
+          git config user.email "bot@dudoo.app"
 
 
       - name: Deploy to GitHub Pages
-        run: npx angular-cli-ghpages --dir=dist/bucket-list --branch=gh-pages --no-silent --repo=https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ftiannn/MyBucketList.git
+        run: npx angular-cli-ghpages --dir=dist/dudoo --branch=gh-pages --no-silent --repo=https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ftiannn/dudoo.git
         env:
           CI: true
