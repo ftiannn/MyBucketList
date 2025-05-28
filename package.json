@@ -23,10 +23,11 @@
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^15.2.0",
     "@angular/cli": "^15.2.0",
     "@angular/compiler-cli": "^15.2.0",
-    "@angular-devkit/build-angular": "^15.2.0",
-    "typescript": "~4.8.4",
-    "sass": "^1.62.0"
+    "angular-cli-ghpages": "^2.0.3",
+    "sass": "^1.62.0",
+    "typescript": "~4.8.4"
   }
 }
