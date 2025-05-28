@@ -28,6 +28,6 @@ jobs:
         run: npx ng build --configuration production --base-href /MyBucketList/
 
       - name: Deploy to GitHub Pages
-        run: npx angular-cli-ghpages --dir=dist/bucket-list --branch=gh-pages
+        run: npx angular-cli-ghpages --dir=dist/bucket-list --branch=gh-pages --no-silent --repo=https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ftiannn/MyBucketList.git
         env:
           CI: true
