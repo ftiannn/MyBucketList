@@ -1,0 +1,23 @@
+.navbar {
+  /* leave empty or remove if handled in styles.scss */
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: inherit;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-top: 2em;
+  padding-bottom: 1em;
+}

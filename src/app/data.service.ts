@@ -1,14 +1,25 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-@Injectable()
 
+@Injectable()
 export class DataService {
-  private goals = new BehaviorSubject<any>(['the initial goal', 'Another silly life goal']);
-  goal = this.goals.asObservable();
+  private storageKey = 'bucketListGoals';
+  private goalsSubject = new BehaviorSubject<string[]>(this.loadGoals());
+  goal = this.goalsSubject.asObservable();
 
   constructor() { }
 
-  changeGoal(goal) {
-    this.goals.next(goal);
+  private loadGoals(): string[] {
+    const saved = localStorage.getItem(this.storageKey);
+    return saved ? JSON.parse(saved) : [];
+  }
+
+  private saveGoals(goals: string[]) {
+    localStorage.setItem(this.storageKey, JSON.stringify(goals));
+  }
+
+  changeGoal(goals: string[]) {
+    this.saveGoals(goals);
+    this.goalsSubject.next(goals);
   }
 }
