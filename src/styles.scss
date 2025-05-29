@@ -107,56 +107,94 @@ a {
 .navbar {
   background: linear-gradient(
     135deg,
-    rgba(255, 224, 240, 0.9) 0%,
-    rgba(251, 207, 232, 0.8) 100%
+    rgba(255, 224, 240, 0.95),
+    rgba(251, 207, 232, 0.85)
   );
-  backdrop-filter: blur(10px);
-  border-bottom: 3px dotted var(--accent-pink);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px dotted var(--accent-pink);
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  box-shadow: var(--shadow-basic);
   padding: var(--spacing-sm) var(--spacing-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
-  box-shadow: var(--shadow-basic);
+  gap: 0.5rem;
 
-  h1 {
-    margin: 0;
-    background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
-    background-clip: text;
-    font-weight: 700;
-    // font-size: 1.2rem;
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 
     @media (max-width: 768px) {
       width: 100%;
-      font-size: 1.3rem;
-      text-align: center;
-      margin-bottom: var(--spacing-xs);
+      justify-content: center;
+    }
+
+    .favicon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(
+        135deg,
+        var(--primary-pink),
+        var(--dark-pink)
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+        text-align: center;
+      }
     }
   }
 
   .nav-links {
     display: flex;
-    gap: 1.2em;
+    gap: 1.5rem;
 
     a {
       font-size: 1rem;
       font-weight: 600;
       color: #ec4899;
-      transition: var(--transition-medium);
       text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 2px;
+        background: var(--dark-pink);
+        width: 0;
+        transition: width 0.3s ease;
+        margin-top: 4px;
+      }
 
       &:hover {
         color: var(--dark-pink);
+
+        &::after {
+          width: 100%;
+        }
       }
     }
 
     @media (max-width: 768px) {
       width: 100%;
       justify-content: center;
-      gap: 1em;
       flex-wrap: wrap;
-      padding-bottom: var(--spacing-xs);
+      gap: 1rem;
+      margin-top: var(--spacing-xs);
     }
   }
 }
