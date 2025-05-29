@@ -1,11 +1,11 @@
 <div class="header">
-  <p>You have a bucket of {{ itemCount }} goals!</p>
+  <p>🌸 You have a bucket of {{ itemCount }} lovely goals!</p>
 </div>
 
 <div class="main-wrapper">
   <div class="form-container">
     <p class="instruction">✨ Add a new goal to your bucket list!</p>
-    <form>
+    <form (submit)="addItem(); $event.preventDefault()">
       <input
         type="text"
         class="txt"
@@ -13,27 +13,121 @@
         [(ngModel)]="goalText"
         name="goalText"
       />
-      <input
-        type="submit"
-        class="btn"
-        [value]="'➕ Add Goal'"
-        (click)="addItem()"
-      />
+
+      <div class="select-with-button">
+        <div class="select-wrapper">
+          <select
+            [(ngModel)]="selectedCategory"
+            name="category"
+            class="txt cute-select"
+          >
+            <option disabled value="">Select Category</option>
+            <option *ngFor="let cat of categories" [value]="cat">
+              {{ cat }}
+            </option>
+          </select>
+          <i class="fa-solid fa-caret-down"></i>
+        </div>
+
+        <button
+          type="button"
+          class="icon-btn mini"
+          (click)="openAddCategoryModal()"
+          title="Add Category"
+        >
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+
+      <input type="submit" class="btn" value="➕ Add Goal" />
     </form>
   </div>
 
   <div class="goals-container">
-    <p *ngIf="goals.length === 0" class="empty-state">
-      🌼 Nothing here yet. Add your first goal!
-    </p>
-    <div
-      class="goal"
-      *ngFor="let goal of goals; let i = index"
-      (click)="removeItem(i)"
-    >
-      🌟 {{ goal }}
+    <div class="category-wrapper">
+      <div
+        class="category"
+        *ngFor="let cat of categories"
+        cdkDropList
+        [cdkDropListData]="goalsByCategory(cat)"
+        (cdkDropListDropped)="onDrop($event, cat)"
+      >
+        <button
+          class="delete-float-btn"
+          (click)="requestDeleteCategory(cat); $event.stopPropagation()"
+          title="Delete Category"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+
+        <h3 class="category-title" (click)="toggleCategory(cat)">
+          <span class="cat-text">{{ cat }}</span>
+          <i
+            class="fas"
+            [ngClass]="{
+              'fa-chevron-down': expandedCategories[cat],
+              'fa-chevron-right': !expandedCategories[cat]
+            }"
+          ></i>
+        </h3>
+
+        <div
+          *ngIf="expandedCategories[cat] && goalsByCategory(cat).length === 0"
+          class="empty-category"
+        >
+          <i class="fa-regular fa-folder-open"></i> No goals here yet!
+        </div>
+
+        <div
+          class="category-goals"
+          *ngIf="expandedCategories[cat] && goalsByCategory(cat).length > 0"
+          [@expandCollapse]
+        >
+          <div class="goal" *ngFor="let goal of goalsByCategory(cat)" cdkDrag>
+            <span class="goal-text">🌟 {{ goal.text }}</span>
+            <button
+              (click)="completeGoal(goal)"
+              class="icon-btn"
+              title="Mark as complete"
+            >
+              <i class="fas fa-check-circle"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="showToast" class="toast">🎉 Goal added!</div>
+<!-- Modal: Add Category -->
+<div class="modal-overlay" *ngIf="showCategoryModal">
+  <div class="modal">
+    <h3>Add New Category</h3>
+    <input
+      type="text"
+      [(ngModel)]="newCategory"
+      placeholder="e.g., Travel"
+      class="txt"
+    />
+    <div class="modal-actions">
+      <button class="btn" (click)="addCategory()">Add</button>
+      <button class="btn cancel" (click)="closeModal('category')">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal-overlay" *ngIf="showDeleteModal">
+  <div class="modal">
+    <h3>Are you sure you want to delete "{{ categoryToDelete }}"?</h3>
+    <div class="modal-actions">
+      <button class="btn" (click)="confirmDeleteCategory()">Yes, Delete</button>
+      <button class="btn cancel" (click)="closeModal('delete')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div *ngIf="showToast" class="toast">{{ toastMessage }}</div>

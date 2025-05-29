@@ -1,102 +1,159 @@
+/* ===== UPDATED about.scss ===== */
+
 .about-wrapper {
   max-width: 600px;
-  margin: 2em auto;
-  padding: 2em;
-  background-color: #fff7f0;
-  border-radius: 12px;
+  margin: var(--spacing-lg) auto;
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-light) 100%);
+  border: 3px dotted var(--accent-pink);
+  border-radius: var(--border-radius-md);
   text-align: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-medium);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border: 3px dotted var(--secondary-pink);
+  }
 }
 
 .avatar {
   width: 200px;
+  border: 4px dotted var(--secondary-pink);
   border-radius: 50%;
-  margin-bottom: 1em;
+  margin-bottom: var(--spacing-sm);
+  transition: var(--transition-medium);
+
+  &:hover {
+    border: 4px dotted var(--primary-pink);
+    transform: scale(1.05);
+  }
 }
 
 .dudoo-note {
   font-style: italic;
-  color: #9f1239;
+  color: var(--text-muted);
   font-size: 0.95rem;
-  margin-bottom: 1em;
+  margin-bottom: var(--spacing-sm);
   line-height: 1.4;
+  padding: var(--spacing-sm);
+  background: var(--bg-blush);
+  border: 2px dotted var(--accent-pink);
+  border-radius: var(--border-radius-sm);
 }
 
 .about-app {
-  background-color: #fff0fa;
-  border: 1px dashed #f9a8d4;
+  background: linear-gradient(
+    135deg,
+    var(--bg-light) 0%,
+    var(--bg-lighter) 100%
+  );
+  border: 3px dotted var(--secondary-pink);
   padding: 1.2em;
-  border-radius: 10px;
-  margin: 1.5em 0;
-  color: #6b0f1a;
+  border-radius: var(--border-radius-sm);
+  margin: var(--spacing-md) 0;
+  color: var(--text-tertiary);
   font-size: 1rem;
   line-height: 1.6;
   text-align: left;
+  transition: var(--transition-medium);
+
+  &:hover {
+    border: 3px dotted var(--primary-pink);
+    transform: scale(1.02);
+  }
 
   strong {
     display: block;
     font-size: 1.1rem;
     margin-bottom: 0.4em;
-    color: #be185d;
+    color: var(--dark-pink);
   }
 }
 
 h2 {
-  margin-bottom: 0.5em;
-  color: #6b0f1a;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-tertiary);
+  background: linear-gradient(135deg, var(--text-tertiary), var(--dark-pink));
+  background-clip: text;
 }
 
 .tagline {
   font-size: 1.1rem;
   color: #7f1d1d;
-  margin-bottom: 1.5em;
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
 }
 
 .socials {
   display: flex;
   justify-content: center;
-  gap: 1.5em;
-  margin-top: 2em;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
   flex-wrap: wrap;
 
   a {
     display: inline-flex;
     align-items: center;
-    gap: 0.5em;
-    padding: 0.6em 1.2em;
-    background-color: #fef3c7;
-    color: #92400e;
-    border-radius: 8px;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) 1.2em;
+    background: linear-gradient(
+      135deg,
+      var(--yellow-secondary) 0%,
+      #fde68a 100%
+    );
+    color: var(--yellow-dark);
+    border: 2px dotted var(--yellow-primary);
+    border-radius: var(--border-radius-xs);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: var(--transition-medium);
+    box-shadow: var(--shadow-basic);
 
     i {
       font-size: 1.1rem;
     }
 
     &:hover {
-      background-color: #fde68a;
+      background: linear-gradient(
+        135deg,
+        #fde68a 0%,
+        var(--yellow-primary) 100%
+      );
       color: #78350f;
-      transform: translateY(-2px);
+      border: 2px dotted var(--yellow-dark);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: var(--shadow-soft);
     }
   }
 }
 
 .btn {
-  margin-top: 2em;
-  background: #fbb6ce;
-  color: #6b0f1a;
+  margin-top: var(--spacing-lg);
+  background: linear-gradient(
+    135deg,
+    var(--soft-pink) 0%,
+    var(--secondary-pink) 100%
+  );
+  color: var(--text-tertiary);
   padding: 0.8em 2em;
-  border: none;
-  border-radius: 6px;
+  border: 3px dotted var(--accent-pink);
+  border-radius: var(--border-radius-xs);
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: var(--transition-medium);
+  box-shadow: var(--shadow-soft);
 
   &:hover {
-    background: #f472b6;
+    background: linear-gradient(
+      135deg,
+      var(--secondary-pink) 0%,
+      var(--primary-pink) 100%
+    );
+    border: 3px dotted var(--primary-pink);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
   }
 }
